@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>  <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 12:01:24 2016 ENNAMOURI Maryem
-** Last update Tue Dec  6 12:41:34 2016 ENNAMOURI Maryem
+** Last update Tue Dec  6 15:56:12 2016 ENNAMOURI Maryem
 */
 
 #ifndef	_BFM_H
@@ -45,4 +45,6 @@ typedef	struct	s_ib
   int (*function)(t_player*, t_monster*);
 }		t_command_ib;
 
+void my_putstr(char *str);
+int my_strcmp(char *str1, char *str2);
 #endif

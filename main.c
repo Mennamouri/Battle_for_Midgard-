@@ -9,18 +9,11 @@
 */
 
 #include <stdlib.h>
-#include "BFM.h"
-void	my_putstr(char* str);
+
+int game(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
 {
-  t_player*	player;
-  t_monster*	monster;
-  t_inventory*	inventory;
-
-  player = NULL;
-  monster = NULL;
-  inventory = NULL;
-
+  game(argc, argv);
   return (0);
 }

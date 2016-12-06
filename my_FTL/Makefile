@@ -5,18 +5,22 @@
 ## Login   <ennamo_m@etna-alternance.net>
 ## 
 ## Started on  Thu Oct 27 13:43:15 2016 ENNAMOURI Maryem
-## Last update Tue Dec  6 12:26:41 2016 ENNAMOURI Maryem
+## Last update Sat Nov 12 10:14:13 2016 ENNAMOURI Maryem
 ##
 
 CC = gcc
 
-NAME = 	sta
+NAME = 	my_ftl
 
-SRC = 	main.c		\
-	getCreature.c	\
+SRC = 	air_shed.c	\
+	main.c		\
+	container.c 	\
 	readline.c	\
+	system_control.c\
+	system_repair.c	\
 	my_string.c	\
-	game.c
+	jeu.c		\
+	function_game.c
 
 NAME_LIB = libmy.a
 

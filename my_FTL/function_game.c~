@@ -1,0 +1,78 @@
+/*
+** function_game.c for  in /home/maryem/Piscine/Projet_Final_C/my_FTL
+** 
+** Made by ENNAMOURI Maryem
+** Login   <ennamo_m@etna-alternance.net>
+** 
+** Started on  Sat Nov 12 10:12:54 2016 ENNAMOURI Maryem
+** Last update Sat Nov 12 10:38:59 2016 ENNAMOURI Maryem
+*/
+
+#include "ftl.h"
+#include <stdlib.h>
+#include <time.h>
+
+static	t_ennemi ennemi = {0,0};
+
+void    create_ennemi()
+{
+  //  ennemi = malloc(sizeof(*ennemi));
+  ennemi.point_vie = 20;
+  ennemi.damage = 10;
+  if (ennemi.point_vie > 0)
+    {
+      my_putstr_color("yellow", "un ennemi est apparu\n");
+    }
+  //return (ennemi);
+}
+
+void	attack_ennemi(t_ship *ship)
+{
+  //my_putstr_color("cyan", "ennemi attack");
+  if (rand() % 100 > ship->my_navigation->evade)
+  {
+    my_putstr_color("cyan", "ennemi attack");
+  }
+  else
+    my_putstr_color("cyan", "evade");
+}
+
+int     game()
+{
+  t_ship *ship;
+  //t_ennemi *ennemi;
+  char  *str;
+
+  //  ennemi = NULL;
+  my_ftl_draw();
+  ship = create_ship();
+  add_weapon_to_ship(ship);
+  add_ftl_drive_to_ship(ship);
+  add_navigation_tools_to_ship(ship);
+  add_container_to_ship(ship);
+  my_putstr_color("cyan", "waiting_for_orders\n");
+  //system_repair(ship);
+  while ((ship->my_navigation->sector < 10) || (ship->my_drive->energy > 0 && ship->my_navigation->sector < 10) || (ship->hull > 0))
+    {
+      if (ennemi.point_vie > 0)
+	{
+	  attack_ennemi(ship);
+	}
+      my_putstr_color("cyan", "quelle est votre action :) ?\n");
+      str = readline();
+      if (my_strcmp(str, "attack") != 0 && my_strcmp(str, "detect") != 0 && my_strcmp(str, "jump") != 0 && my_strcmp(str, "getbonus") != 0 && my_strcmp\
+	  (str, "stat") && my_strcmp(str, "help"))
+	my_putstr_color("red", "erreur argument! faites help pour en savoir plus :D !! \n");
+      if (my_strcmp(str, "detect") == 0)
+	detect_game(ship);
+      if (my_strcmp(str, "getbonus") == 0)
+	get_bonus(ship);
+      if (my_strcmp(str, "jump") == 0)
+	jump_game(ship);
+      if (my_strcmp(str, "stat") == 0)
+	stat_game(ship);
+      if (my_strcmp(str, "help") == 0)
+	help_game();
+    }
+  return (0);
+}
