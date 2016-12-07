@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:38:08 2016 DE PADUA Cesare
-** Last update Wed Dec  7 13:49:09 2016 DE PADUA Cesare
+** Last update Wed Dec  7 23:34:33 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -38,7 +38,8 @@ int start_fight(t_player *player)
   t_creature *creature;
 
   creature = getCreature();
-  get_instruction_for_ib(creature, player);
+  if(get_instruction_for_ib(player, creature) == 2)
+    return (0);
   return 1;
 }
 int quit(t_player *player)
@@ -58,8 +59,8 @@ int	get_instruction_for_oob(t_player *player)
   while (playing)
   {
     i = 0;
-    my_putstr_color("blue", "choose an action ->");
-    user_input = "";
+    my_putstr_color("blue", "choose an action -> ");
+    user_input = "let's fight";
     //user_input = readline();
     if(!user_input)
     {

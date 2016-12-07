@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:03:10 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 11:35:44 2016 DE PADUA Cesare
+** Last update Wed Dec  7 23:11:59 2016 DE PADUA Cesare
 */
 
 #include "bfm.h"
@@ -23,7 +23,7 @@ t_player          *create_player(char *name)
     }
   player->name = name;
   player->inventory = NULL;
-  player->monsters = NULL;
+  player->team = NULL;
    my_putstr_color("blue", "joueur initialiser!\n");
   return (player);
 }
@@ -44,5 +44,24 @@ int             add_inventory(t_player *player)
   inventory->muchrooms = 0;
   player->inventory = inventory;
   my_putstr_color("blue", "l'inventory à bien été rajouté!\n");
+  return (1);
+}
+
+int add_container_to_player(t_player *player)
+{
+  t_container	*container;
+
+  my_putstr_color("blue", "Adding team in progress...\n");
+  container = malloc(sizeof(*container));
+  if (container == NULL)
+  {
+    my_putstr_color("red", "Error while adding team, please restart the game\n");
+    return (0);
+  }
+  container->first = NULL;
+  container->last = NULL;
+  container->nb_monsters = 0;
+  player->team = container;
+  my_putstr_color("green", "Team has been added succesfully\n");
   return (1);
 }
