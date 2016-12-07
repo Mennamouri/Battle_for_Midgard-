@@ -1,0 +1,18 @@
+/*
+** functions.c for  in /home/maryem/projet_C
+** 
+** Made by ENNAMOURI Maryem
+** Login   <ennamo_m@etna-alternance.net>
+** 
+** Started on  Wed Dec  7 10:03:10 2016 ENNAMOURI Maryem
+** Last update Wed Dec  7 10:08:17 2016 ENNAMOURI Maryem
+*/
+
+static  t_inventory inventory = {0,0,0};
+
+void	create_inventory()
+{
+  inventory.magicbox = 5;
+  inventory.rupees = 420;
+  inventory.muchrooms = 0;
+}
