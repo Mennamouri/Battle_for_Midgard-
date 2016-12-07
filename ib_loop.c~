@@ -1,0 +1,18 @@
+/*
+** ib_loop.c for  in /home/cesare/Documents/Battle_for_Midgard/Battle_for_Midgard-
+** 
+** Made by DE PADUA Cesare
+** Login   <depadu_c@etna-alternance.net>
+** 
+** Started on  Wed Dec  7 13:23:31 2016 DE PADUA Cesare
+** Last update Wed Dec  7 13:52:49 2016 DE PADUA Cesare
+*/
+#include <stdlib.h>
+#include "bfm.h"
+
+static const t_command_ib	ib_command[] = {
+  {"magic catch", &magic_catch},
+  {"help me", &help_me},
+  {NULL, NULL}
+}
+

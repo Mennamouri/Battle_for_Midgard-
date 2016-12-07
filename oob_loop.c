@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:38:08 2016 DE PADUA Cesare
-** Last update Wed Dec  7 11:46:04 2016 DE PADUA Cesare
+** Last update Wed Dec  7 13:49:09 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -35,8 +35,10 @@ int the_chosen_one(t_player *player)
 
 int start_fight(t_player *player)
 {
-  if(player != NULL)
-    my_putstr("start fight\n");
+  t_creature *creature;
+
+  creature = getCreature();
+  get_instruction_for_ib(creature, player);
   return 1;
 }
 int quit(t_player *player)
@@ -57,7 +59,8 @@ int	get_instruction_for_oob(t_player *player)
   {
     i = 0;
     my_putstr_color("blue", "choose an action ->");
-    user_input = readline();
+    user_input = "";
+    //user_input = readline();
     if(!user_input)
     {
       my_putstr_color("red", "Ther's some problem whit the command system, please retry or restart game\n");
