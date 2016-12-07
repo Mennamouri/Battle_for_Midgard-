@@ -5,13 +5,15 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 13:55:06 2016 ENNAMOURI Maryem
-** Last update Tue Dec  6 16:18:47 2016 ENNAMOURI Maryem
+** Last update Wed Dec  7 11:09:50 2016 ENNAMOURI Maryem
 */
 
-#include "BFM.h"
+#include "bfm.h"
 
-int game(int argc, char *argv[] )
+int game(int argc, char *argv[] ) 
 {
+  t_player *player;
+  
   if(argc != 3)
   {
     my_putstr("the program must  be launched in the following way:\n./sta -n NAME\n");
@@ -22,5 +24,7 @@ int game(int argc, char *argv[] )
     my_putstr("the program must  be launched in the following way:\n./sta -n NAME\n");
     return 1;
   }
+  player = create_player(argv[3]);
+  add_inventory(player);
   return 0;
 }

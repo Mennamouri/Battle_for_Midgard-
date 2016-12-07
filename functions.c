@@ -5,10 +5,11 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:03:10 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 10:40:57 2016 ENNAMOURI Maryem
+** Last update Wed Dec  7 11:10:03 2016 ENNAMOURI Maryem
 */
 
-#include "BFM.h"
+#include "bfm.h"
+#include <stdlib.h>
 
 t_player          *create_player(char *name)
 {

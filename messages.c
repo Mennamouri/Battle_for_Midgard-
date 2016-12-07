@@ -5,12 +5,11 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 16:19:21 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 09:49:58 2016 ENNAMOURI Maryem
+** Last update Wed Dec  7 11:09:24 2016 ENNAMOURI Maryem
 */
 
-#include "BFM.h"
+#include "bfm.h"
 #include <stdlib.h>
-#include <time.h>
 
 void	my_bfm_draw()
 {
