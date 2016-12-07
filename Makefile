@@ -5,7 +5,7 @@
 ## Login   <ennamo_m@etna-alternance.net>
 ## 
 ## Started on  Thu Oct 27 13:43:15 2016 ENNAMOURI Maryem
-## Last update Tue Dec  6 12:26:41 2016 ENNAMOURI Maryem
+## Last update Wed Dec  7 11:36:37 2016 DE PADUA Cesare
 ##
 
 CC = gcc
@@ -16,7 +16,10 @@ SRC = 	main.c		\
 	getCreature.c	\
 	readline.c	\
 	my_string.c	\
-	game.c
+	game.c		\
+	functions.c	\
+	oob_loop.c	\
+	messages.c
 
 NAME_LIB = libmy.a
 

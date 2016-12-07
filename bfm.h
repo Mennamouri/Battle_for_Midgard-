@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>  <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 12:01:24 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 11:08:22 2016 ENNAMOURI Maryem
+** Last update Wed Dec  7 11:46:24 2016 DE PADUA Cesare
 */
 
 #ifndef	_BFM_H
@@ -28,8 +28,8 @@ typedef	struct	s_inventory
 typedef	struct	s_player
 {
   char *name;
-  t_monster*	monsters;
-  t_inventory	inventory;
+  t_monster     *monsters;
+  t_inventory	*inventory;
 }		t_player;
 
 
@@ -60,10 +60,11 @@ int             add_inventory(t_player *player);
 void    my_bfm_draw();
 void    help_game_oob();
 void    help_game_ib();
-void    stat_game(t_ship *the_ship);
+void    stat_game();
 int	show_team(t_player *player);
 int	the_chosen_one(t_player *player);
 int	start_fight(t_player *player);
+int	quit(t_player *player);
 int	get_instruction_for_oob(t_player *player);
 
 #endif

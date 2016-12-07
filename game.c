@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 13:55:06 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 11:09:50 2016 ENNAMOURI Maryem
+** Last update Wed Dec  7 11:50:39 2016 DE PADUA Cesare
 */
 
 #include "bfm.h"
@@ -24,7 +24,9 @@ int game(int argc, char *argv[] )
     my_putstr("the program must  be launched in the following way:\n./sta -n NAME\n");
     return 1;
   }
+  my_bfm_draw();
   player = create_player(argv[3]);
   add_inventory(player);
+  get_instruction_for_oob(player);
   return 0;
 }

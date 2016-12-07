@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:03:10 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 11:10:03 2016 ENNAMOURI Maryem
+** Last update Wed Dec  7 11:35:44 2016 DE PADUA Cesare
 */
 
 #include "bfm.h"
@@ -25,7 +25,7 @@ t_player          *create_player(char *name)
   player->inventory = NULL;
   player->monsters = NULL;
    my_putstr_color("blue", "joueur initialiser!\n");
-  return (ship);
+  return (player);
 }
 
 int             add_inventory(t_player *player)
@@ -33,7 +33,7 @@ int             add_inventory(t_player *player)
   t_inventory   *inventory;
 
   my_putstr_color("green", "l'ajout de  l'inventory en cours ...\n");
-  the_inventory = malloc(sizeof(t_inventory));
+  inventory = malloc(sizeof(t_inventory));
   if (inventory == NULL)
     {
       my_putstr_color("yellow", "l'ajout de l'inventory a échoué :/ !!\n");
@@ -41,7 +41,8 @@ int             add_inventory(t_player *player)
     }
   inventory->magicbox = 5;
   inventory->rupees = 420;
-  inventory->machrooms = 0;
+  inventory->muchrooms = 0;
+  player->inventory = inventory;
   my_putstr_color("blue", "l'inventory à bien été rajouté!\n");
   return (1);
 }
