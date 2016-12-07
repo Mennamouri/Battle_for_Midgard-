@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:38:08 2016 DE PADUA Cesare
-** Last update Wed Dec  7 23:34:33 2016 DE PADUA Cesare
+** Last update Thu Dec  8 00:34:20 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -13,7 +13,7 @@
 
 static const t_command_oob	oob_command[] = {
   {"team", &show_team},
-  {"you are the choosen one", &the_chosen_one},
+  {"you are the chosen one", &the_chosen_one},
   {"let's fight", &start_fight},
   {"quit", &quit},
   {NULL, NULL}
@@ -60,8 +60,7 @@ int	get_instruction_for_oob(t_player *player)
   {
     i = 0;
     my_putstr_color("blue", "choose an action -> ");
-    user_input = "let's fight";
-    //user_input = readline();
+    user_input = readline();
     if(!user_input)
     {
       my_putstr_color("red", "Ther's some problem whit the command system, please retry or restart game\n");
