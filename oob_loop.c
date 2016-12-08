@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:38:08 2016 DE PADUA Cesare
-** Last update Thu Dec  8 12:52:14 2016 ENNAMOURI Maryem
+** Last update Thu Dec  8 19:27:30 2016 ENNAMOURI Maryem
 */
 
 #include <stdlib.h>
@@ -55,20 +55,36 @@ int team(t_player *player)
 
 int the_chosen_one(t_player *player)
 {
-  if(player != NULL)
-    my_putstr("the chosen one\n");
+  char	*monster_name;
+  t_monster   *monster;
+
+  monster = player->team->first;
+  my_putstr("what is your chosen monster??\n");
+  monster_name = readline();
+  while (monster != NULL)
+  {
+    if (my_strcmp(monster_name, monster->creature->name) == 0)
+    {
+      player->team->selected = monster;
+    }
+    monster =  monster->next;
+  }
+  my_putstr("your chosen one is : ");
+  my_putstr(player->team->selected->creature->name);
+  my_putchar('\n');
   return 1;
 }
 
 int start_fight(t_player *player)
 {
-  t_creature *creature;
+  t_creature	*creature;
 
   creature = getCreature();
   if(get_instruction_for_ib(player, creature) == 2)
     return (0);
   return 1;
 }
+
 int quit(t_player *player)
 {
   if(player != NULL)
