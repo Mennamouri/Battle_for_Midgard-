@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>  <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 12:01:24 2016 ENNAMOURI Maryem
-** Last update Thu Dec  8 11:00:13 2016 DE PADUA Cesare
+** Last update Thu Dec  8 12:10:33 2016 DE PADUA Cesare
 */
 
 #ifndef	_BFM_H
@@ -93,5 +93,6 @@ int	add_container_to_player(t_player *player);
 void    add_creature_to_container(t_player *player, t_monster *monster);
 void	show_monster_stats(t_creature creature);
 int     quit_from_fight(t_creature *creature, t_player *player);
+int slash(t_creature *creature, t_player *player);
 
 #endif

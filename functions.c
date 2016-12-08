@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:03:10 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 23:11:59 2016 DE PADUA Cesare
+** Last update Thu Dec  8 11:54:41 2016 DE PADUA Cesare
 */
 
 #include "bfm.h"
@@ -58,6 +58,7 @@ int add_container_to_player(t_player *player)
     my_putstr_color("red", "Error while adding team, please restart the game\n");
     return (0);
   }
+  container->selected = NULL;
   container->first = NULL;
   container->last = NULL;
   container->nb_monsters = 0;

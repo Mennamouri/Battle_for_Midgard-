@@ -5,12 +5,13 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 13:23:31 2016 DE PADUA Cesare
-** Last update Thu Dec  8 10:54:17 2016 DE PADUA Cesare
+** Last update Thu Dec  8 12:17:01 2016 DE PADUA Cesare
 */
 #include <stdlib.h>
 #include "bfm.h"
 
 static const t_command_ib	ib_command[] = {
+  {"slash", &slash},
   {"magic catch", &magic_catch},
   {"help me", &help_me},
   {"quit", &quit_from_fight},
@@ -39,6 +40,7 @@ void	add_creature_to_container(t_player *player, t_monster *monster)
   {
     player->team->first = monster;
     player->team->last = monster;
+    player->team->selected = monster;
   }
   else
   {
@@ -54,10 +56,7 @@ int	magic_catch (t_creature *creature, t_player *player)
   int random;
 
   if(player->inventory->magicbox <= 0)
-  {
     my_putstr_color("red","You have no more magicbox!\n");
-    return (0);
-  }
   --player->inventory->magicbox;
   random = (rand() % 3 + 1);
   if(random == 1)
@@ -107,7 +106,13 @@ int	get_instruction_for_ib(t_player *player, t_creature *creature)
 
   fighting = 1;
 
-  my_putstr_color("blue", "Wild creature appears...\n");
+  my_putstr_color("yellow", "Wild creature appears...\n");
+  my_putstr_color("yellow", "NAME : ");
+  my_putstr_color("yellow", creature->name);
+  my_putstr_color("yellow", "\n");
+  my_putstr_color("yellow", "PV : ");
+  my_put_nbr(creature->pv);
+  my_putstr_color("yellow", "\n");
   while(fighting)
   {
     i = 0;
