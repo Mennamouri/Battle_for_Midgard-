@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 13:23:31 2016 DE PADUA Cesare
-** Last update Thu Dec  8 14:29:17 2016 DE PADUA Cesare
+** Last update Fri Dec  9 00:41:26 2016 ENNAMOURI Maryem
 */
 #include <stdlib.h>
 #include "bfm.h"
@@ -100,7 +100,7 @@ int	quit_from_fight(t_creature *creature, t_player *player)
     return (2);
   return (2);
 }
-
+  
 int	get_instruction_for_ib(t_player *player, t_creature *creature)
 {
   char	*user_input;
@@ -108,7 +108,6 @@ int	get_instruction_for_ib(t_player *player, t_creature *creature)
   int	fighting;
 
   fighting = 1;
-
   my_putstr_color("yellow", "Wild creature appears...\n");
   my_putstr_color("yellow", "NAME : ");
   my_putstr_color("yellow", creature->name);
@@ -123,8 +122,7 @@ int	get_instruction_for_ib(t_player *player, t_creature *creature)
     user_input = readline();
     if (!user_input)
     {
-      my_putstr_color("red", "Ther's some problem whit the command system, please retry or restart gam\
-e\n");
+      my_putstr_color("red", "Ther's some problem whit the command system, please retry or restart game\n");
       return (0);
     }
     while (ib_command[i].commande != NULL)
@@ -132,15 +130,23 @@ e\n");
       if(my_strcmp(ib_command[i].commande, user_input) == 0)
       {
 	int result;
-
 	result = ib_command[i].function(creature, player);
 	if(result == 0)
+	{
 	  fighting = 0;
+	  return (0);
+	}
 	else if(result == 2)
 	  return (2);
       }
       ++i;
     }
+    if (player->team->selected != NULL)
+      if (select_attack_for_monster(player, creature) == 0)
+      {
+	fighting = 0;
+	return (0);
+      }
   }
   return (0);
 }

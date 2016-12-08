@@ -5,7 +5,7 @@
 ## Login   <ennamo_m@etna-alternance.net>
 ## 
 ## Started on  Thu Oct 27 13:43:15 2016 ENNAMOURI Maryem
-## Last update Thu Dec  8 12:09:16 2016 DE PADUA Cesare
+## Last update Fri Dec  9 00:21:29 2016 ENNAMOURI Maryem
 ##
 
 CC = gcc
@@ -21,7 +21,8 @@ SRC = 	main.c		\
 	oob_loop.c	\
 	messages.c	\
 	ib_loop.c	\
-	battle_functions.c
+	battle_functions.c\
+	battle_enemy.c
 
 NAME_LIB = libmy.a
 

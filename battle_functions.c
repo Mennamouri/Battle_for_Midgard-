@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 11:27:33 2016 DE PADUA Cesare
-** Last update Thu Dec  8 14:36:29 2016 DE PADUA Cesare
+** Last update Fri Dec  9 00:48:35 2016 ENNAMOURI Maryem
 */
 
 #include <stdlib.h>
@@ -91,7 +91,7 @@ int gamble(t_creature *creature, t_player *player)
   my_putstr_color("green", " use gamble\n");
   if(rand_for_target < 50)
   {
-    my_putstr_color("red", "Your creature hit it self!");
+    my_putstr_color("red", "Your creature hit it self!\n");
     player->team->selected->creature->pv -= rand_for_damage;
     return (1);
   }
