@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 16:19:21 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 11:31:32 2016 DE PADUA Cesare
+** Last update Thu Dec  8 12:42:41 2016 ENNAMOURI Maryem
 */
 
 #include "bfm.h"
@@ -56,7 +56,7 @@ void	help_game_ib()
 void	stat_game()
 {
   my_putstr_color("yellow", "############### **STAT_GAME** #####################\n");
-  my_putstr_color("magenta","******************YOU*************** : \n");
+  my_putstr_color("magenta","******************TEAM*************** : \n");
+  
   my_putstr_color("yellow", "############### ************** #####################\n");
 }
-
