@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 13:23:31 2016 DE PADUA Cesare
-** Last update Thu Dec  8 13:42:34 2016 DE PADUA Cesare
+** Last update Thu Dec  8 14:29:17 2016 DE PADUA Cesare
 */
 #include <stdlib.h>
 #include "bfm.h"
@@ -14,6 +14,7 @@ static const t_command_ib	ib_command[] = {
   {"slash", &slash},
   {"fire", &fire},
   {"gamble",&gamble},
+  {"rest", &rest},
   {"magic catch", &magic_catch},
   {"help me", &help_me},
   {"quit", &quit_from_fight},

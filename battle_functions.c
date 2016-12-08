@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 11:27:33 2016 DE PADUA Cesare
-** Last update Thu Dec  8 13:39:46 2016 DE PADUA Cesare
+** Last update Thu Dec  8 14:36:29 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -114,7 +114,29 @@ int gamble(t_creature *creature, t_player *player)
   if(player->team->selected->creature->pv <= 0)
   {
     my_putstr_color("red", "Your creature is fainted!\n");
+    if(player->team->selected->next != NULL)
+      player->team->selected = player->team->selected->next;
+    else
+      player->team->selected = player->team->selected->prev;
     return (0);
   }
+  return (1);
+}
+
+int rest(t_creature *creature, t_player *player)
+{
+  if (player->team->selected == NULL)
+  {
+    my_putstr_color("red", "You have no member in your team\n");
+    return (1);
+  }
+  if(creature == NULL)
+    return (0);
+  my_putstr_color("green", player->team->selected->creature->name);
+  my_putstr_color("green", " use restore!\n");
+  if((player->team->selected->creature->pm + 10) >= player->team->selected->creature->pmmax)
+    player->team->selected->creature->pm = player->team->selected->creature->pmmax;
+  else
+    player->team->selected->creature->pm += 10;
   return (1);
 }
