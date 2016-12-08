@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 11:27:33 2016 DE PADUA Cesare
-** Last update Thu Dec  8 12:33:09 2016 DE PADUA Cesare
+** Last update Thu Dec  8 13:39:46 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -70,6 +70,50 @@ int fire(t_creature *creature, t_player *player)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
     free(creature);
+    return (0);
+  }
+  return (1);
+}
+
+int gamble(t_creature *creature, t_player *player)
+{
+  int rand_for_damage;
+  int rand_for_target;
+
+  rand_for_damage = (rand() % 20);
+  rand_for_target = (rand() % 100 + 1);
+  if (player->team->selected == NULL)
+  {
+    my_putstr_color("red", "You have no member in your team\n");
+    return (1);
+  }
+  my_putstr_color("green", player->team->selected->creature->name);
+  my_putstr_color("green", " use gamble\n");
+  if(rand_for_target < 50)
+  {
+    my_putstr_color("red", "Your creature hit it self!");
+    player->team->selected->creature->pv -= rand_for_damage;
+    return (1);
+  }
+  else
+  {
+    creature->pv -= rand_for_damage;
+    my_putstr_color("yellow", "NAME : ");
+    my_putstr_color("yellow", creature->name);
+    my_putstr_color("yellow", "\n");
+    my_putstr_color("yellow", "PV : ");
+    my_put_nbr(creature->pv);
+    my_putstr_color("yellow", "\n"); 
+  }
+  if(creature->pv <= 0)
+  {
+    my_putstr_color("green", "Your enemy is fainted!\n");
+    free(creature);
+    return (0);
+  }
+  if(player->team->selected->creature->pv <= 0)
+  {
+    my_putstr_color("red", "Your creature is fainted!\n");
     return (0);
   }
   return (1);
