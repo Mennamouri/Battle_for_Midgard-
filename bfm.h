@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>  <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 12:01:24 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 23:23:05 2016 DE PADUA Cesare
+** Last update Thu Dec  8 11:00:13 2016 DE PADUA Cesare
 */
 
 #ifndef	_BFM_H
@@ -21,7 +21,6 @@ typedef struct  s_creature
   int           pmmax;
 }               t_creature;
 
-
 typedef	struct	s_monster
 {
   t_creature		*creature;
@@ -31,6 +30,7 @@ typedef	struct	s_monster
 
 typedef struct	s_container
 {
+  t_monster	*selected;
   t_monster	*first;
   t_monster	*last;
   int		nb_monsters;

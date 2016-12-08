@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 13:23:31 2016 DE PADUA Cesare
-** Last update Wed Dec  7 23:47:37 2016 DE PADUA Cesare
+** Last update Thu Dec  8 10:54:17 2016 DE PADUA Cesare
 */
 #include <stdlib.h>
 #include "bfm.h"
@@ -52,7 +52,13 @@ void	add_creature_to_container(t_player *player, t_monster *monster)
 int	magic_catch (t_creature *creature, t_player *player)
 {
   int random;
-  
+
+  if(player->inventory->magicbox <= 0)
+  {
+    my_putstr_color("red","You have no more magicbox!\n");
+    return (0);
+  }
+  --player->inventory->magicbox;
   random = (rand() % 3 + 1);
   if(random == 1)
   {
