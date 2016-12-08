@@ -5,24 +5,51 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:38:08 2016 DE PADUA Cesare
-** Last update Thu Dec  8 00:34:20 2016 DE PADUA Cesare
+** Last update Thu Dec  8 12:52:14 2016 ENNAMOURI Maryem
 */
 
 #include <stdlib.h>
 #include "bfm.h"
 
 static const t_command_oob	oob_command[] = {
-  {"team", &show_team},
+  {"team", &team},
   {"you are the chosen one", &the_chosen_one},
   {"let's fight", &start_fight},
   {"quit", &quit},
   {NULL, NULL}
 };
 
-int show_team(t_player *player)
+int team(t_player *player)
 {
-  if(player != NULL)
-    my_putstr("show team\n");
+  t_monster     *current;
+
+  current = player->team->first;
+  if (player->team->first == NULL)
+    my_putstr_color("red", "Your team is empty!\n");
+  while (current != NULL)
+    {
+      my_putstr_color("yellow", "NAME : ");
+      my_putstr(current->creature->name);
+      my_putchar('\n');
+      my_putstr_color("yellow", "LVL : ");
+      my_put_nbr(current->creature->lvl);
+      my_putchar('\n');
+      my_putstr_color("yellow", "PV : ");
+      my_put_nbr(current->creature->pv);
+      my_putchar('\n');
+      my_putstr_color("yellow", "PV MAX : ");
+      my_put_nbr(current->creature->pvmax);
+      my_putchar('\n');
+      my_putstr_color("yellow", "PM : ");
+      my_put_nbr(current->creature->pm);
+      my_putchar('\n');
+      my_putstr_color("yellow", "PM MAX : ");
+      my_put_nbr(current->creature->pmmax);
+      my_putchar('\n');
+      my_putstr_color("yellow", "************************************ ");
+      my_putchar('\n');
+      current = current->next;
+    }
   return 1;
 }
 

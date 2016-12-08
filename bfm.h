@@ -5,7 +5,9 @@
 ** Login   <ennamo_m@etna-alternance.net>  <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 12:01:24 2016 ENNAMOURI Maryem
-** Last update Thu Dec  8 13:39:00 2016 DE PADUA Cesare
+** Last update Thu Dec  8 13:52:50 2016 DE PADUA Cesare
+** Last update Thu Dec  8 12:35:56 2016 DE PADUA Cesare
+** Last update Thu Dec  8 12:34:14 2016 ENNAMOURI Maryem
 */
 
 #ifndef	_BFM_H
@@ -81,7 +83,7 @@ void    my_bfm_draw();
 void    help_game_oob();
 void    help_game_ib();
 void    stat_game();
-int	show_team(t_player *player);
+int	team(t_player *player);
 int	the_chosen_one(t_player *player);
 int	start_fight(t_player *player);
 int	quit(t_player *player);
@@ -96,5 +98,5 @@ int     quit_from_fight(t_creature *creature, t_player *player);
 int	slash(t_creature *creature, t_player *player);
 int	fire(t_creature *creature, t_player *player);
 int	gamble(t_creature *creature, t_player *player);
-  
+
 #endif
