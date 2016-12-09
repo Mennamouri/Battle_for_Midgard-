@@ -5,7 +5,8 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 13:23:31 2016 DE PADUA Cesare
-** Last update Fri Dec  9 00:41:26 2016 ENNAMOURI Maryem
+** Last update Fri Dec  9 00:58:17 2016 DE PADUA Cesare
+** Last update Thu Dec  8 22:55:17 2016 DE PADUA Cesare
 */
 #include <stdlib.h>
 #include "bfm.h"
@@ -16,8 +17,7 @@ static const t_command_ib	ib_command[] = {
   {"gamble",&gamble},
   {"rest", &rest},
   {"magic catch", &magic_catch},
-  {"help me", &help_me},
-  {"quit", &quit_from_fight},
+  {"quit", &help_me},
   {NULL, NULL}
 };
 
@@ -57,12 +57,22 @@ void	add_creature_to_container(t_player *player, t_monster *monster)
 int	magic_catch (t_creature *creature, t_player *player)
 {
   int random;
+  int nb_to_compare;
 
   if(player->inventory->magicbox <= 0)
     my_putstr_color("red","You have no more magicbox!\n");
   --player->inventory->magicbox;
-  random = (rand() % 3 + 1);
-  if(random == 1)
+  if(creature->pv == creature->pvmax)
+  {
+    random = (rand() % 3 + 1);
+    nb_to_compare = 1;
+  }
+  else
+  {
+    random = (rand() % 100 + 1);
+    nb_to_compare = (creature->pvmax - creature->pv) + 33;
+  }
+  if(random <= nb_to_compare)
   {
     t_monster *monster;
 
@@ -72,6 +82,10 @@ int	magic_catch (t_creature *creature, t_player *player)
       my_putstr_color("red", "An error occurred while monster creation\n");
       return 0;
     }
+    creature->pvmax *= 2;
+    creature->pmmax *= 2;
+    creature->pv = creature->pvmax;
+    creature->pm = creature->pmmax;
     monster->creature = creature;
     monster->prev = NULL;
     monster->next = NULL;
@@ -94,13 +108,6 @@ int	help_me(t_creature *creature, t_player *player)
   return (0);
 }
 
-int	quit_from_fight(t_creature *creature, t_player *player)
-{
-  if (creature != NULL && player != NULL)
-    return (2);
-  return (2);
-}
-  
 int	get_instruction_for_ib(t_player *player, t_creature *creature)
 {
   char	*user_input;
@@ -136,8 +143,6 @@ int	get_instruction_for_ib(t_player *player, t_creature *creature)
 	  fighting = 0;
 	  return (0);
 	}
-	else if(result == 2)
-	  return (2);
       }
       ++i;
     }

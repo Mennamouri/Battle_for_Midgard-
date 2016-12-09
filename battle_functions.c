@@ -5,7 +5,11 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 11:27:33 2016 DE PADUA Cesare
+<<<<<<< Updated upstream
 ** Last update Fri Dec  9 00:48:35 2016 ENNAMOURI Maryem
+=======
+** Last update Fri Dec  9 00:32:46 2016 DE PADUA Cesare
+>>>>>>> Stashed changes
 */
 
 #include <stdlib.h>
@@ -37,6 +41,8 @@ int slash(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
+    player->team->selected->creature->pv = player->team->selected->creature->pvmax;
+    player->team->selected->creature->pm = player->team->selected->creature->pmmax;
     free(creature);
     return (0);
   }
@@ -70,6 +76,8 @@ int fire(t_creature *creature, t_player *player)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
     free(creature);
+    player->team->selected->creature->pv = player->team->selected->creature->pvmax;
+    player->team->selected->creature->pm = player->team->selected->creature->pmmax;
     return (0);
   }
   return (1);
@@ -109,15 +117,26 @@ int gamble(t_creature *creature, t_player *player)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
     free(creature);
+    player->team->selected->creature->pv = player->team->selected->creature->pvmax;
+    player->team->selected->creature->pm = player->team->selected->creature->pmmax;
     return (0);
   }
   if(player->team->selected->creature->pv <= 0)
   {
+    t_monster *current;
+
+    current = player->team->first;
+    player->team->selected = NULL;
     my_putstr_color("red", "Your creature is fainted!\n");
-    if(player->team->selected->next != NULL)
-      player->team->selected = player->team->selected->next;
-    else
-      player->team->selected = player->team->selected->prev;
+    while (current != NULL)
+    {
+      if (current->creature->pv > 0)
+      {
+	player->team->selected = current;
+	return (0);
+      }
+      current = current->next;
+    }
     return (0);
   }
   return (1);
