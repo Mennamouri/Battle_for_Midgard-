@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:03:10 2016 ENNAMOURI Maryem
-** Last update Fri Dec  9 02:57:51 2016 DE PADUA Cesare
+** Last update Fri Dec  9 03:36:22 2016 DE PADUA Cesare
 */
 
 #include "bfm.h"
@@ -41,7 +41,7 @@ int             add_inventory(t_player *player)
     }
   inventory->magicbox = 5;
   inventory->rupees = 420;
-  inventory->muchrooms = 0;
+  inventory->mushrooms = 0;
   player->inventory = inventory;
   my_putstr_color("blue", "l'inventory à bien été rajouté!\n");
   return (1);
