@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 13:55:06 2016 ENNAMOURI Maryem
-** Last update Fri Dec  9 01:27:00 2016 DE PADUA Cesare
+** Last update Fri Dec  9 05:00:44 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -32,8 +32,7 @@ int game(int argc, char *argv[] )
   get_instruction_for_oob(player);
   while(player->team->first != NULL)
   {
-    player->team->first = player->team->first->next;
-    if(player->team->first == NULL)
+    if(player->team->first->next == NULL)
     {
       free(player->team->first->creature->name);
       free(player->team->first->creature);
@@ -45,6 +44,7 @@ int game(int argc, char *argv[] )
       free(player->team->first->prev->creature);
       free(player->team->first->prev);
     }
+    player->team->first = player->team->first->next;
   }
   free(player->team);
   free(player->inventory);

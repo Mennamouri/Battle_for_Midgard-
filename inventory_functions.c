@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Fri Dec  9 03:18:43 2016 DE PADUA Cesare
-** Last update Fri Dec  9 04:19:04 2016 DE PADUA Cesare
+** Last update Fri Dec  9 04:56:47 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -70,6 +70,7 @@ int use_mushroom(t_player *player)
   my_putstr_color("green", "It now have ");
   my_put_nbr(player->team->selected->creature->pv);
   my_putstr_color("green", " pvs!\n");
+  player->inventory->mushrooms--;
   return (1);
 }
 

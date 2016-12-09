@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 21:20:59 2016 ENNAMOURI Maryem
-** Last update Fri Dec  9 04:24:34 2016 DE PADUA Cesare
+** Last update Fri Dec  9 04:51:56 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -16,6 +16,7 @@ static const t_command_ib       ib_command_ennemy[] = {
   {"fire", &fire_ennemy},
   {"gamble",&gamble_ennemy},
   {"rest", &rest_ennemy},
+  {"magic", &magicbox_ennemy},
   {NULL, NULL}
 };
 
@@ -124,7 +125,7 @@ int gamble_ennemy(t_creature *creature, t_player *player)
   my_putstr_color("green", " use gamble\n");
   if(rand_for_target < 50)
     {
-      my_putstr_color("red", "Your Monster hit it self!");
+      my_putstr_color("red", "Your ennemy hit it self!\n");
       creature->pv -= rand_for_damage;
       return (1);
     }
@@ -168,12 +169,43 @@ int gamble_ennemy(t_creature *creature, t_player *player)
   return (1);
 }
 
+int magicbox_ennemy(t_creature *creature, t_player *player)
+{
+  if (creature == NULL)
+    return (0);
+  int random;
+
+  random = (rand() % 3 + 1);
+  if(random <= 1)
+  {
+    t_monster	*current;
+    
+    my_putstr_color("red", "The enemy captured your monster!\n");
+    current = player->team->first;
+    remove_monster_from_list(player, player->team->selected);
+    player->team->selected = NULL;
+    my_putstr_color("red", "Your creature is fainted!\n");
+    while (current != NULL)
+    {
+      if(current->creature->pv > 0)
+      {  
+	player->team->selected = current;
+	return (0);
+      }
+      current = current->next;
+    }
+    return (0);
+  }
+  my_putstr_color("green", "The ennemy tried to capture your monster... but it failed\n");
+  return (1);
+}
+
 int     select_attack_for_monster(t_player *player, t_creature *creature)
 {
   int	nb;
   int res;
   
-  nb = rand() % 4;
+  nb = rand() % 5;
   res = ib_command_ennemy[nb].function(creature, player);
   return (res);
 }
