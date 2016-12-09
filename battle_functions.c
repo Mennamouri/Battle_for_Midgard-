@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 11:27:33 2016 DE PADUA Cesare
-** Last update Fri Dec  9 02:52:21 2016 DE PADUA Cesare
+** Last update Fri Dec  9 04:21:29 2016 DE PADUA Cesare
 ** Last update Fri Dec  9 00:32:46 2016 DE PADUA Cesare
 */
 
@@ -38,6 +38,7 @@ int slash(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
+    gain_rupees(player);
     free(creature->name);
     free(creature);
     return (0);
@@ -71,6 +72,7 @@ int fire(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
+    gain_rupees(player);
     free(creature->name);
     free(creature);
     return (0);
@@ -111,6 +113,7 @@ int gamble(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
+    gain_rupees(player);
     free(creature->name);
     free(creature);
     return (0);

@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 21:20:59 2016 ENNAMOURI Maryem
-** Last update Fri Dec  9 03:01:30 2016 DE PADUA Cesare
+** Last update Fri Dec  9 04:24:34 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -159,7 +159,8 @@ int gamble_ennemy(t_creature *creature, t_player *player)
   }
   if(creature->pv <= 0)
   {
-      my_putstr_color("red", "Player is fainted!\n");
+      my_putstr_color("red", "Your enemy is fainted!\n");
+      gain_rupees(player);
       free(creature->name);
       free(creature);
       return (0);

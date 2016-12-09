@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>  <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 12:01:24 2016 ENNAMOURI Maryem
-** Last update Fri Dec  9 03:42:27 2016 DE PADUA Cesare
+** Last update Fri Dec  9 04:19:41 2016 DE PADUA Cesare
 ** Last update Thu Dec  8 21:52:56 2016 DE PADUA Cesare
 ** Last update Thu Dec  8 12:35:56 2016 DE PADUA Cesare
 ** Last update Thu Dec  8 12:34:14 2016 ENNAMOURI Maryem
@@ -108,5 +108,6 @@ void remove_monster_from_list(t_player *player, t_monster *monster);
 int buy_magic_box(t_player *player);
 int buy_mushrooms(t_player *player);
 int use_mushroom(t_player *player);
+void gain_rupees(t_player *player);
 #endif
   

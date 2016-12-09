@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Fri Dec  9 03:18:43 2016 DE PADUA Cesare
-** Last update Fri Dec  9 04:01:00 2016 DE PADUA Cesare
+** Last update Fri Dec  9 04:19:04 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -71,4 +71,15 @@ int use_mushroom(t_player *player)
   my_put_nbr(player->team->selected->creature->pv);
   my_putstr_color("green", " pvs!\n");
   return (1);
+}
+
+void gain_rupees(t_player *player)
+{
+  int	gain;
+
+  gain = (rand() % 30 + 1) + 89;
+  player->inventory->rupees += gain;
+  my_putstr_color("green", "You won ");
+  my_put_nbr(gain);
+  my_putstr_color("green", " rupees!\n");
 }
