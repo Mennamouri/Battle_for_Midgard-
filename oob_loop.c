@@ -5,7 +5,7 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:38:08 2016 DE PADUA Cesare
-** Last update Thu Dec  8 19:27:30 2016 ENNAMOURI Maryem
+** Last update Fri Dec  9 03:28:16 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -15,6 +15,7 @@ static const t_command_oob	oob_command[] = {
   {"team", &team},
   {"you are the chosen one", &the_chosen_one},
   {"let's fight", &start_fight},
+  {"buy magicbox", &buy_magic_box},
   {"quit", &quit},
   {NULL, NULL}
 };
