@@ -5,9 +5,10 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 13:55:06 2016 ENNAMOURI Maryem
-** Last update Wed Dec  7 22:14:03 2016 DE PADUA Cesare
+** Last update Fri Dec  9 01:27:00 2016 DE PADUA Cesare
 */
 
+#include <stdlib.h>
 #include "bfm.h"
 
 int game(int argc, char *argv[] ) 
@@ -29,5 +30,24 @@ int game(int argc, char *argv[] )
   add_inventory(player);
   add_container_to_player(player);
   get_instruction_for_oob(player);
+  while(player->team->first != NULL)
+  {
+    player->team->first = player->team->first->next;
+    if(player->team->first == NULL)
+    {
+      free(player->team->first->creature->name);
+      free(player->team->first->creature);
+      free(player->team->first);
+    }
+    else
+    {
+      free(player->team->first->prev->creature->name);
+      free(player->team->first->prev->creature);
+      free(player->team->first->prev);
+    }
+  }
+  free(player->team);
+  free(player->inventory);
+  free(player);
   return 0;
 }
