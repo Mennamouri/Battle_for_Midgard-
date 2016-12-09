@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Wed Dec  7 10:03:10 2016 ENNAMOURI Maryem
-** Last update Thu Dec  8 11:54:41 2016 DE PADUA Cesare
+** Last update Fri Dec  9 02:57:51 2016 DE PADUA Cesare
 */
 
 #include "bfm.h"
@@ -65,4 +65,38 @@ int add_container_to_player(t_player *player)
   player->team = container;
   my_putstr_color("green", "Team has been added succesfully\n");
   return (1);
+}
+
+void remove_monster_from_list(t_player *player, t_monster *monster)
+{
+  if (monster != NULL)
+  {
+    if (player->team->last == monster)
+    {
+      if (monster->prev == NULL)
+      {
+	player->team->last = NULL;
+	player->team->first = NULL;
+      }
+      else
+      {
+	player->team->last = monster->prev;
+	player->team->last->next = NULL;
+      }
+    }
+    else if (player->team->first == monster)
+    {
+      player->team->first = monster->next;
+      player->team->first->prev = NULL;
+    }
+    else if (player->team->first != monster && player->team->last != monster)
+    {
+      monster->next->prev = monster->prev;
+      monster->prev->next = monster->next;
+    }
+    player->team->nb_monsters--;
+    free(monster->creature->name);
+    free(monster->creature);
+    free(monster);
+  }
 }

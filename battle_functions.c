@@ -5,11 +5,8 @@
 ** Login   <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 11:27:33 2016 DE PADUA Cesare
-<<<<<<< Updated upstream
-** Last update Fri Dec  9 00:48:35 2016 ENNAMOURI Maryem
-=======
+** Last update Fri Dec  9 02:52:21 2016 DE PADUA Cesare
 ** Last update Fri Dec  9 00:32:46 2016 DE PADUA Cesare
->>>>>>> Stashed changes
 */
 
 #include <stdlib.h>
@@ -41,8 +38,7 @@ int slash(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
-    player->team->selected->creature->pv = player->team->selected->creature->pvmax;
-    player->team->selected->creature->pm = player->team->selected->creature->pmmax;
+    free(creature->name);
     free(creature);
     return (0);
   }
@@ -75,9 +71,8 @@ int fire(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
+    free(creature->name);
     free(creature);
-    player->team->selected->creature->pv = player->team->selected->creature->pvmax;
-    player->team->selected->creature->pm = player->team->selected->creature->pmmax;
     return (0);
   }
   return (1);
@@ -116,9 +111,8 @@ int gamble(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
     my_putstr_color("green", "Your enemy is fainted!\n");
+    free(creature->name);
     free(creature);
-    player->team->selected->creature->pv = player->team->selected->creature->pvmax;
-    player->team->selected->creature->pm = player->team->selected->creature->pmmax;
     return (0);
   }
   if(player->team->selected->creature->pv <= 0)
@@ -126,6 +120,7 @@ int gamble(t_creature *creature, t_player *player)
     t_monster *current;
 
     current = player->team->first;
+    remove_monster_from_list(player, player->team->selected);
     player->team->selected = NULL;
     my_putstr_color("red", "Your creature is fainted!\n");
     while (current != NULL)

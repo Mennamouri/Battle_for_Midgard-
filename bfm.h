@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>  <depadu_c@etna-alternance.net>
 ** 
 ** Started on  Tue Dec  6 12:01:24 2016 ENNAMOURI Maryem
-** Last update Fri Dec  9 00:59:17 2016 DE PADUA Cesare
+** Last update Fri Dec  9 02:57:57 2016 DE PADUA Cesare
 ** Last update Thu Dec  8 21:52:56 2016 DE PADUA Cesare
 ** Last update Thu Dec  8 12:35:56 2016 DE PADUA Cesare
 ** Last update Thu Dec  8 12:34:14 2016 ENNAMOURI Maryem
@@ -104,6 +104,7 @@ int slash_ennemy(t_creature *creature, t_player *player);
 int fire_ennemy(t_creature *creature, t_player *player);
 int rest_ennemy(t_creature *creature, t_player *player);
 int gamble_ennemy(t_creature *creature, t_player *player);  
+void remove_monster_from_list(t_player *player, t_monster *monster);
 
 #endif
   

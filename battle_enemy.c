@@ -5,7 +5,7 @@
 ** Login   <ennamo_m@etna-alternance.net>
 ** 
 ** Started on  Thu Dec  8 21:20:59 2016 ENNAMOURI Maryem
-** Last update Fri Dec  9 00:34:31 2016 ENNAMOURI Maryem
+** Last update Fri Dec  9 03:01:30 2016 DE PADUA Cesare
 */
 
 #include <stdlib.h>
@@ -32,7 +32,7 @@ int slash_ennemy(t_creature *creature, t_player *player)
   my_putstr_color("green", " use slash\n");
   player->team->selected->creature->pv -= 15;
   creature->pm -= 3;
-  my_putstr_color("cyan", "Your Monster : ");
+  my_putstr_color("cyan", "Your Monster: ");
   my_putstr_color("cyan", player->team->selected->creature->name);
   my_putstr_color("cyan", "\n"); 
   my_putstr_color("cyan", "PV : ");
@@ -43,6 +43,7 @@ int slash_ennemy(t_creature *creature, t_player *player)
       t_monster	*current;
 
       current = player->team->first;
+      remove_monster_from_list(player, player->team->selected);
       player->team->selected = NULL;
       my_putstr_color("red", "Your creature is fainted!\n");
       while (current != NULL)
@@ -71,10 +72,10 @@ int fire_ennemy(t_creature *creature, t_player *player)
   my_putstr_color("green", " use fire\n");
   player->team->selected->creature->pv -= 30;
   creature->pm -= 7;
-  my_putstr_color("cyan", "Your Monster");
+  my_putstr_color("cyan", "Your Monster: ");
   my_putstr_color("cyan",player->team->selected->creature->name);
   my_putstr_color("cyan", "\n");
-  my_putstr_color("cyan", "PV : ");
+  my_putstr_color("cyan", "PV: ");
   my_put_nbr(player->team->selected->creature->pv);
   my_putstr_color("cyan", "\n");
   if (player->team->selected->creature->pv <= 0)
@@ -82,6 +83,7 @@ int fire_ennemy(t_creature *creature, t_player *player)
       t_monster	*current;
 
       current = player->team->first;
+      remove_monster_from_list(player, player->team->selected);
       player->team->selected = NULL;
       my_putstr_color("red", "Your creature is fainted!\n");
       while (current != NULL)
@@ -129,7 +131,7 @@ int gamble_ennemy(t_creature *creature, t_player *player)
   else
     {
       player->team->selected->creature->pv -= rand_for_damage;
-      my_putstr_color("cyan", "Your Monster ");
+      my_putstr_color("cyan", "Your Monster: ");
       my_putstr_color("cyan", player->team->selected->creature->name);
       my_putstr_color("cyan", "\n");
       my_putstr_color("cyan", "PV : ");
@@ -141,6 +143,7 @@ int gamble_ennemy(t_creature *creature, t_player *player)
       t_monster	*current;
 
       current = player->team->first;
+      remove_monster_from_list(player, player->team->selected);
       player->team->selected = NULL;
       my_putstr_color("red", "Your creature is fainted!\n");
       while (current != NULL)
@@ -157,6 +160,7 @@ int gamble_ennemy(t_creature *creature, t_player *player)
   if(creature->pv <= 0)
   {
       my_putstr_color("red", "Player is fainted!\n");
+      free(creature->name);
       free(creature);
       return (0);
   }
